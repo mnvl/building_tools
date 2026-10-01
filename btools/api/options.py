@@ -1,5 +1,5 @@
 from enum import Enum
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 
 class ArchFunctionType(Enum):
@@ -108,12 +108,12 @@ class DoorFillType(Enum):
 
 @dataclass
 class DoorOptions:
-    arch: ArchOptions = ArchOptions()
-    array: ArrayOptions = ArrayOptions()
-    size_offset: SizeOffsetOptions = SizeOffsetOptions()
-    panel_fill: FillPanelOptions = FillPanelOptions()
-    louver_fill: FillLouverOptions = FillLouverOptions()
-    glass_fill: FillGlassPaneOptions = FillGlassPaneOptions()
+    arch: ArchOptions = field(default_factory=ArchOptions)
+    array: ArrayOptions = field(default_factory=ArrayOptions)
+    size_offset: SizeOffsetOptions = field(default_factory=SizeOffsetOptions)
+    panel_fill: FillPanelOptions = field(default_factory=FillPanelOptions)
+    louver_fill: FillLouverOptions = field(default_factory=FillLouverOptions)
+    glass_fill: FillGlassPaneOptions = field(default_factory=FillGlassPaneOptions)
 
     frame_thickness: float = 0.1
     frame_depth: float = 0.1
@@ -137,12 +137,12 @@ class WindowFillType(Enum):
 
 @dataclass
 class WindowOptions:
-    arch: ArchOptions = ArchOptions()
-    array: ArrayOptions = ArrayOptions()
-    size_offset: SizeOffsetOptions = SizeOffsetOptions()
-    bar_fill: FillBarOptions = FillBarOptions()
-    louver_fill: FillLouverOptions = FillLouverOptions()
-    glass_fill: FillGlassPaneOptions = FillGlassPaneOptions()
+    arch: ArchOptions = field(default_factory=ArchOptions)
+    array: ArrayOptions = field(default_factory=ArrayOptions)
+    size_offset: SizeOffsetOptions = field(default_factory=SizeOffsetOptions)
+    bar_fill: FillBarOptions = field(default_factory=FillBarOptions)
+    louver_fill: FillLouverOptions = field(default_factory=FillLouverOptions)
+    glass_fill: FillGlassPaneOptions = field(default_factory=FillGlassPaneOptions)
 
     type: WindowType = WindowType.RECTANGULAR
     frame_thickness: float = 0.1
@@ -154,18 +154,18 @@ class WindowOptions:
 
 @dataclass
 class MultigroupOptions:
-    arch: ArchOptions = ArchOptions()
-    array: ArrayOptions = ArrayOptions()
-    size_offset: SizeOffsetOptions = SizeOffsetOptions()
+    arch: ArchOptions = field(default_factory=ArchOptions)
+    array: ArrayOptions = field(default_factory=ArrayOptions)
+    size_offset: SizeOffsetOptions = field(default_factory=SizeOffsetOptions)
 
-    bar_fill_window: FillBarOptions = FillBarOptions()
-    panel_fill_window: FillPanelOptions = FillPanelOptions()
-    louver_fill_window: FillLouverOptions = FillLouverOptions()
-    glass_fill_window: FillGlassPaneOptions = FillGlassPaneOptions()
+    bar_fill_window: FillBarOptions = field(default_factory=FillBarOptions)
+    panel_fill_window: FillPanelOptions = field(default_factory=FillPanelOptions)
+    louver_fill_window: FillLouverOptions = field(default_factory=FillLouverOptions)
+    glass_fill_window: FillGlassPaneOptions = field(default_factory=FillGlassPaneOptions)
 
-    panel_fill_door: FillPanelOptions = FillPanelOptions()
-    louver_fill_door: FillLouverOptions = FillLouverOptions()
-    glass_fill_door: FillGlassPaneOptions = FillGlassPaneOptions()
+    panel_fill_door: FillPanelOptions = field(default_factory=FillPanelOptions)
+    louver_fill_door: FillLouverOptions = field(default_factory=FillLouverOptions)
+    glass_fill_door: FillGlassPaneOptions = field(default_factory=FillGlassPaneOptions)
 
     frame_thickness: float = 0.1
     frame_depth: float = 0.1
@@ -231,9 +231,9 @@ class RailOptions:
     has_corner_post: bool = True
     offset: float = 0.05
 
-    post_fill: PostFillOptions = PostFillOptions()
-    rail_fill: RailFillOptions = RailFillOptions()
-    wall_fill: WallFillOptions = WallFillOptions()
+    post_fill: PostFillOptions = field(default_factory=PostFillOptions)
+    rail_fill: RailFillOptions = field(default_factory=RailFillOptions)
+    wall_fill: WallFillOptions = field(default_factory=WallFillOptions)
 
     bottom_rail: bool = True
     bottom_rail_offset: float = 0.0
@@ -241,9 +241,9 @@ class RailOptions:
 
 @dataclass
 class BalconyOptions:
-    rail: RailOptions = RailOptions()
-    array: ArrayOptions = ArrayOptions()
-    size_offset: SizeOffsetOptions = SizeOffsetOptions()
+    rail: RailOptions = field(default_factory=RailOptions)
+    array: ArrayOptions = field(default_factory=ArrayOptions)
+    size_offset: SizeOffsetOptions = field(default_factory=SizeOffsetOptions)
 
     depth: float = 1.0
     depth_offset: float = 0.0
