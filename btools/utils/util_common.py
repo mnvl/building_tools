@@ -1,3 +1,4 @@
+import sys
 import bpy
 import enum
 import bmesh
@@ -34,6 +35,11 @@ def args_from_props(props, names):
 
 
 def popup_message(message, title="Error", icon="ERROR"):
+    if bpy.app.background:
+        # No UI to pop up in: opening a popup menu crashes Blender run with --background.
+        print("{}: {}".format(title, message), file=sys.stderr)
+        return
+
     def oops(self, context):
         self.layout.label(text=message)
 
